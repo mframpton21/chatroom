@@ -12,10 +12,25 @@
         <input class="form-control text-box" type="text" ng-model="message" placeholder="Message">
       </form>
       <div class="messages-container">
-        <p ng-repeat="message in messages"> {{message.text}} </p>
+
+        <table class="table table-bordered">
+            <thead>
+              <th>Messages from DevMountaineers</th>
+              <th>Date and Time</th>
+            </thead>
+            <tbody>
+              <tr ng-repeat="message in messages" ng-hide="message.text === '' || message.text === undefined">
+                  <td>{{message.text}}</td>
+                  <td>{{message.createdAt | date:'medium'}}</td>
+              </tr>
+            </tbody>
+        </table>
+
+
+       <!--  <p ng-repeat="message in messages"> {{message.text}} </p> -->
       </div>
     </div>
-    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+    <script src="http://www.parsecdn.com/js/parse-1.2.19.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/mainCtrl.js"></script>
